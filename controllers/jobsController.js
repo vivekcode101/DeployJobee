@@ -209,7 +209,7 @@ exports.applyJob = catchAsyncErrors(async (req, res, next) => {
     // Renaming resume
     file.name = `${req.user.name.replace(' ', '_')}_${job._id}${path.parse(file.name).ext}`;
 
-    file.mv(`${process.env.UPLOAD_PATH}/${file.name}`, async err => {
+    file.mv(`./public/uploads/${file.name}`, async err => {
         if (err) {
             console.log(err);
             return next(new ErrorHandler('Resume upload failed.', 500));
